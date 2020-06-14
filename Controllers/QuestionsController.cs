@@ -21,16 +21,20 @@ namespace quiz_Backend.Controllers
             this.context = context;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<Question>> Get()
+        [HttpGet("{quizId}")]
+        public ActionResult<IEnumerable<Question>> Get([FromRoute] int quizId)
         {
-            return this.context.Questions.ToList();
+            return this.context.Questions.Where(q => q.quizId == quizId).ToList();
         }
 
         // POST api/questions
         [HttpPost]
         public async Task<IActionResult> Post(Question question)
         {
+            var quiz = this.context.Quiz.Where(q => q.id == question.quizId).SingleOrDefaultAsync();
+
+            if (quiz == null) return NotFound();
+
             this.context.Questions.Add(question);
             await this.context.SaveChangesAsync();
 
