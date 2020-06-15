@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,6 +28,10 @@ namespace quiz_Backend
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<QuizDbContext>(options => options.UseInMemoryDatabase("quizDb"));
+
+            services.AddDbContext<UserDbContext>(options => options.UseInMemoryDatabase("userDb"));
+
+            services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<UserDbContext>();
 
             services.AddCors(options => options.AddPolicy("Cors", builder => {
                 builder

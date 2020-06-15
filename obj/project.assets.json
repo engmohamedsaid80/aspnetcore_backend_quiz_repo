@@ -12622,23 +12622,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\msaeed\\.nuget\\packages\\": {},
+    "C:\\Users\\engmo\\.nuget\\packages\\": {},
     "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Work\\Angular_Study\\quiz\\quiz_Backend\\quiz_Backend.csproj",
+      "projectUniqueName": "D:\\Workshop\\Angular\\Quiz_Project_Course\\backend\\aspnetcore_backend_quiz_repo\\quiz_Backend.csproj",
       "projectName": "quiz_Backend",
-      "projectPath": "D:\\Work\\Angular_Study\\quiz\\quiz_Backend\\quiz_Backend.csproj",
-      "packagesPath": "C:\\Users\\msaeed\\.nuget\\packages\\",
-      "outputPath": "D:\\Work\\Angular_Study\\quiz\\quiz_Backend\\obj\\",
+      "projectPath": "D:\\Workshop\\Angular\\Quiz_Project_Course\\backend\\aspnetcore_backend_quiz_repo\\quiz_Backend.csproj",
+      "packagesPath": "C:\\Users\\engmo\\.nuget\\packages\\",
+      "outputPath": "D:\\Workshop\\Angular\\Quiz_Project_Course\\backend\\aspnetcore_backend_quiz_repo\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\msaeed\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\engmo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
