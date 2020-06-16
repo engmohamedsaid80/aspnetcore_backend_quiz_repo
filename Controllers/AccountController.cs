@@ -15,6 +15,11 @@ namespace quiz_Backend.Controllers
         public string Password { get; set; }
     }
 
+    public class UserToken
+    {
+        public string token { get; set; }
+    }
+
 
     [Route("api/[controller]")]
     [ApiController]
@@ -39,7 +44,7 @@ namespace quiz_Backend.Controllers
 
             var jwt = new JwtSecurityToken();
 
-            return Ok(new JwtSecurityTokenHandler().WriteToken(jwt));
+            return Ok(new UserToken { token = new JwtSecurityTokenHandler().WriteToken(jwt) });
         }
     }
 }
