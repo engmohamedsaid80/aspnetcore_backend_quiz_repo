@@ -9,5 +9,7 @@ namespace quiz_Backend.Models
     {
         public int id { get; set; }
         public string title { get; set; }
+
+        public string OwnerId { get; set; }
     }
 }

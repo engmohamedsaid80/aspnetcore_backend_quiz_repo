@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,9 +13,11 @@ namespace quiz_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class QuizzesController : ControllerBase
     {
         private readonly QuizDbContext _context;
+        private string _userId;
 
         public QuizzesController(QuizDbContext context)
         {
@@ -25,7 +28,8 @@ namespace quiz_Backend.Controllers
         [HttpGet]
         public IEnumerable<Quiz> GetQuiz()
         {
-            return _context.Quiz;
+            _userId = GetUserIdFromClaim();
+            return _context.Quiz.Where(q => q.OwnerId == _userId);
         }
 
         // GET: api/Quizzes/5
@@ -91,6 +95,10 @@ namespace quiz_Backend.Controllers
                 return BadRequest(ModelState);
             }
 
+            _userId = GetUserIdFromClaim();
+
+            quiz.OwnerId = _userId;
+
             _context.Quiz.Add(quiz);
             await _context.SaveChangesAsync();
 
@@ -121,6 +129,11 @@ namespace quiz_Backend.Controllers
         private bool QuizExists(int id)
         {
             return _context.Quiz.Any(e => e.id == id);
+        }
+
+        private string GetUserIdFromClaim()
+        {
+            return HttpContext.User.Claims.First().Value;
         }
     }
 }
