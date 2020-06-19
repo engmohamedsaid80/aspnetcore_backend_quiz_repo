@@ -13,7 +13,7 @@ namespace quiz_Backend.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    
     public class QuizzesController : ControllerBase
     {
         private readonly QuizDbContext _context;
@@ -25,6 +25,7 @@ namespace quiz_Backend.Controllers
         }
 
         // GET: api/Quizzes
+        [Authorize]
         [HttpGet]
         public IEnumerable<Quiz> GetQuiz()
         {
@@ -40,6 +41,7 @@ namespace quiz_Backend.Controllers
         }
 
         // GET: api/Quizzes/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetQuiz([FromRoute] int id)
         {
@@ -59,6 +61,7 @@ namespace quiz_Backend.Controllers
         }
 
         // PUT: api/Quizzes/5
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutQuiz([FromRoute] int id, [FromBody] Quiz quiz)
         {
@@ -94,6 +97,7 @@ namespace quiz_Backend.Controllers
         }
 
         // POST: api/Quizzes
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> PostQuiz([FromBody] Quiz quiz)
         {
@@ -113,6 +117,7 @@ namespace quiz_Backend.Controllers
         }
 
         // DELETE: api/Quizzes/5
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteQuiz([FromRoute] int id)
         {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using quiz_Backend.Models;
@@ -21,6 +22,7 @@ namespace quiz_Backend.Controllers
             this.context = context;
         }
 
+        [AllowAnonymous]
         [HttpGet("{quizId}")]
         public ActionResult<IEnumerable<Question>> Get([FromRoute] int quizId)
         {
@@ -28,6 +30,7 @@ namespace quiz_Backend.Controllers
         }
 
         // POST api/questions
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Post(Question question)
         {
@@ -41,6 +44,7 @@ namespace quiz_Backend.Controllers
             return Ok(question);
         }
 
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> Put(Question question)
         {
