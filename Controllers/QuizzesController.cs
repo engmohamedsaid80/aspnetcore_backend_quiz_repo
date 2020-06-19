@@ -32,6 +32,13 @@ namespace quiz_Backend.Controllers
             return _context.Quiz.Where(q => q.OwnerId == _userId);
         }
 
+        [AllowAnonymous]
+        [HttpGet("all")]
+        public IEnumerable<Quiz> GetAllQuiz()
+        {
+            return _context.Quiz;
+        }
+
         // GET: api/Quizzes/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetQuiz([FromRoute] int id)
